@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px; /* Add some top margin */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #880000;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ccc;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: sticky;
+    top: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Section Headings */
+h2, h3 {
+    color: white;
+}
+
+/* List Styles */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Responsive Image Styles */
+.team-member img,
+#college-info img {
+    width: 200px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Button Styles */
+.btn-custom {
+    background-color: #880000; /* Custom button color */
+    color: white; /* Button text color */
+}
+
+.btn-custom:hover {
+    background-color: #aa0000; /* Darker shade on hover */
+}

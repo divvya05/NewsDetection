@@ -8,27 +8,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            background-image: url("{{ url_for('static', filename='city.png') }}");
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: visible; /* scrollbars setting */
+            font-family: 'Crimson Text', serif; /* Apply crimson text font */
+            color: rgb(255, 252, 253); /* Set text color to crimson */
+        }
+
+        #bgVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Keep video behind other content */
+            transform: translate(-50%, -50%);
         }
 
         .container {
+            position: relative;
+            z-index: 1; /* Keep content above video */
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
-            margin-top: 20px; /* Add some top margin */
+            margin-top: 20px;
+            color: rgb(255, 255, 255); /* Set text color to crimson */
         }
 
         .sidebar {
             position: sticky;
             top: 20px;
-            height: fit-content; /* Adjust the height according to content */
+            height: fit-content;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
+            color: rgb(255, 255, 255); /* Set text color to white */
         }
 
         .sidebar ul {
@@ -41,7 +57,7 @@
         }
 
         .sidebar a {
-            color: white;
+            color: rgb(224, 190, 197);
             text-decoration: none;
             display: block;
             padding: 5px 10px;
@@ -50,11 +66,11 @@
         }
 
         .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 0, 0, 0.1); /* Crimson highlight */
         }
 
         h2, h3 {
-            color: white;
+            color: rgb(255, 255, 255);
         }
 
         ul {
@@ -85,8 +101,15 @@
             color: #ccc;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <video autoplay muted loop id="bgVideo">
+        <source src="{{ url_for('static', filename='background.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">Fake News Detection</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,19 +118,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/output">Stats</a>
+                    <a class="nav-link" href="{{ url_for('stats') }}">Stats</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/team">Our Team</a>
+                    <a class="nav-link" href="{{ url_for('team') }}">Our Team</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/about">About Website<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url_for('about') }}">About Website</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                 </li>
             </ul>
         </div>

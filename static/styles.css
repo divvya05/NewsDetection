@@ -87,3 +87,7 @@ li {
 .btn-custom:hover {
     background-color: #aa0000; /* Darker shade on hover */
 }
+
+pre {
+    color: white; /* Set classification report text color to white */
+}

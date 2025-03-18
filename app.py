@@ -54,8 +54,18 @@ def stats():
     if 'user_id' not in session:  # Check if user is logged in
         flash('Please log in to access this page.', 'warning')
         return redirect(url_for('login'))
+    
+    classification_report = """\
+              precision    recall  f1-score   support
 
-    return render_template('stats.html')  # Render stats.html
+           0       0.99      0.98      0.99      4650
+           1       0.98      0.99      0.99      4330
+
+    accuracy                           0.99      8980
+   macro avg       0.99      0.99      0.99      8980
+weighted avg       0.99      0.99      0.99      8980"""
+
+    return render_template('stats.html',accuracy = 98.80, classification_report=classification_report )  # Render stats.html
 
 
 # Team route

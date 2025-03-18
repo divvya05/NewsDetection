@@ -13,9 +13,9 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: visible; /* scrollbars setting */
-            font-family: 'Crimson Text', serif;
-            color: white;
+            overflow: visible; /*Scrollbar set*/
+            font-family: 'Crimson Text', serif; /* Use Crimson Text font */
+            color: white; /* Default text color */
         }
 
         #bgVideo {
@@ -26,35 +26,39 @@
             min-height: 100%;
             width: auto;
             height: auto;
-            z-index: -1;
+            z-index: -1; /* Keep video behind other content */
             transform: translate(-50%, -50%);
-            object-fit: cover;
+            object-fit: cover; /* Cover the entire viewport */
         }
 
         .container {
-            position: relative;
-            z-index: 1;
-            background-color: rgba(0, 0, 0, 0.7);
+            position: relative; /* Position for overlay content */
+            z-index: 1; /* Keep content above video */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
         }
 
         h2, h3 {
-            color: white;
+            color: white; /* Heading colors */
+        }
+
+        pre {
+            color: white; /* Set classification report text color to white */
         }
 
         /* Custom navbar styles */
         .navbar {
-            background-color: #880000;
+            background-color: #880000; /* Navbar background color */
         }
 
         .navbar-brand, .navbar-nav .nav-link {
-            color: white;
+            color: white; /* Navbar text color */
         }
 
         .navbar-nav .nav-link:hover {
-            color: #ccc;
+            color: #ccc; /* Navbar hover effect */
         }
     </style>
 </head>
@@ -112,6 +116,7 @@
 
     </div>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

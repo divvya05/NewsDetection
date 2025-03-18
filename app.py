@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import pandas as pd
 import sqlite3
+import pickle
 import os  # Import os module for generating random secret key
 
 # Initialize Flask app
@@ -94,19 +95,46 @@ def logout():
     flash('Logged out successfully!', 'success')
     return redirect(url_for('login'))  # Redirect to login page after logout
 
+def load_model_and_vectorizer():
+    try:
+        with open('models/fake_news_model.pkl', 'rb') as f:
+            model = pickle.load(f)
+        with open('models/vectorizer.pkl', 'rb') as f:
+            vectorizer = pickle.load(f)
+        return model, vectorizer
+    except FileNotFoundError:
+        print("Error: Model or vectorizer file not found. Please train the model first.")
+        return None, None
+
 # Fake News Detection route
 @app.route('/detect', methods=['POST'])
 def detect():
+    if 'user_id' not in session:  # Check if user is logged in
+        flash('Please log in to access this page.', 'warning')
+        return redirect(url_for('login'))
+
     news_text = request.form['news_text']
-    
-    # Here you would typically call your machine learning model to classify the news.
-    # For demonstration purposes, let's assume we just return a dummy result.
-    
-    is_fake = False  # Replace this with your actual prediction logic
+
+    # Load the trained model and vectorizer
+    fake_news_model, vectorizer = load_model_and_vectorizer()
+
+    if fake_news_model is None or vectorizer is None:
+        flash("Model not loaded. Please train the model and restart the application.", "error")
+        return render_template('index.html', username=session['username'])
+
+    # Vectorize the input text
+    news_text_vectorized = vectorizer.transform([news_text])
+
+    # Make prediction
+    prediction = fake_news_model.predict(news_text_vectorized)[0]  # Get the prediction (0 or 1)
+
+    # Determine the result and reason based on the prediction
+    is_fake = prediction == 0  # 0 means fake, 1 means true
     result = "This news is classified as " + ("fake" if is_fake else "true") + "."
     reason = "This classification is based on the text patterns analyzed by the model."
 
-    return render_template('index.html', result=result, reason=reason)
+    return render_template('index.html', username=session['username'], result=result, reason=reason)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

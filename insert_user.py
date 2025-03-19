@@ -8,5 +8,6 @@ def insert_user(username, password):
 
 # Example usage: Insert a user with username 'admin' and password 'password123'
 if __name__ == '__main__':
-    insert_user('admin', 'password123')
+    #insert_user('admin', 'password123')
+    insert_user('user1', '123456')
     print("User 'admin' inserted successfully.")

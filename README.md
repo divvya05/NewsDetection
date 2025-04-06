@@ -42,6 +42,8 @@ This code implements a complete workflow for detecting fake news using machine l
    This end-to-end process allows you to classify news articles effectively based on their textual
    content!
 
+![alt text](image.png)
+
 # Technologies Used
 
 1. Flask:

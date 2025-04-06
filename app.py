@@ -7,6 +7,7 @@ import os  # Import os module for generating random secret key
 # Initialize Flask app
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Generate a random secret key
+print("Secret key: ", app.secret_key)
 
 # Database connection function
 def get_db_connection():
@@ -28,6 +29,7 @@ def login():
 
         conn = get_db_connection()
         user = conn.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password)).fetchone()
+        conn.execute('SELECT * FROM users').fetchone()
         conn.close()
 
         if user:
@@ -40,7 +42,7 @@ def login():
 
     return render_template('login.html')
 
-# Index route (main dashboard)
+# Index route (main dashboard)+
 @app.route('/index')
 def index():
     if 'user_id' not in session:  # Check if user is logged in
@@ -95,6 +97,7 @@ def logout():
     flash('Logged out successfully!', 'success')
     return redirect(url_for('login'))  # Redirect to login page after logout
 
+# Define Load Model and Vectorizer Function
 def load_model_and_vectorizer():
     try:
         with open('models/fake_news_model.pkl', 'rb') as f:
@@ -113,6 +116,7 @@ def detect():
         flash('Please log in to access this page.', 'warning')
         return redirect(url_for('login'))
 
+    # Take News Text Input
     news_text = request.form['news_text']
 
     # Load the trained model and vectorizer

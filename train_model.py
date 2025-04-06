@@ -28,7 +28,7 @@ X_train_vectorized = vectorizer.fit_transform(X_train)
 X_test_vectorized = vectorizer.transform(X_test)
 
 # Train the Logistic Regression model
-model = LogisticRegression(max_iter=1000)
+model = LogisticRegression(max_iter=20000)
 model.fit(X_train_vectorized, y_train)
 
 # Make predictions
@@ -53,7 +53,7 @@ plt.xlabel('Predicted')
 plt.title('Confusion Matrix')
 plt.savefig('static/confusion_matrix.png')  # Save confusion matrix image
 
-# Plotting Accuracy and Loss (if applicable)
+# Plotting Accuracy Graph
 plt.figure(figsize=(10, 6))
 plt.plot([1, 2], [0.90, accuracy], marker='o', label='Accuracy')
 plt.title('Model Accuracy')

@@ -19,4 +19,6 @@ CREATE TABLE detection_history (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+SELECT * FROM users;
+
 

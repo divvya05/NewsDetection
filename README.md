@@ -46,7 +46,8 @@ This code implements a complete workflow for detecting fake news using machine l
 
 ![alt text](image.png)
 
-#Accuracy graph
+# Accuracy graph
+
 ![alt text](image-1.png)
 
 # Technologies Used

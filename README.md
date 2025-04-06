@@ -42,7 +42,12 @@ This code implements a complete workflow for detecting fake news using machine l
    This end-to-end process allows you to classify news articles effectively based on their textual
    content!
 
+# Confusion Matrix
+
 ![alt text](image.png)
+
+#Accuracy graph
+![alt text](image-1.png)
 
 # Technologies Used
 
